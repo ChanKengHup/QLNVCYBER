@@ -14,12 +14,20 @@ function staffListManager() {
         return this.position += position 
     }
     this.updateStaff = function (staff) {
-       
-        console.log(this.position);
-
         if(this.position != -1) {
             this.staffList[this.position] = staff
             this.position = 0
         }
+    }
+    this.searchStaff = function (keyWord) {
+        var keyWordLower = keyWord.toLowerCase()
+       var newStaffs =  this.staffList.filter(function(staff) {
+           var staffLower = staff.typeOfStaff.toLowerCase()
+
+           var indexName = staffLower.indexOf(keyWordLower)
+            return indexName > -1
+        })
+        return newStaffs
+    
     }
 }

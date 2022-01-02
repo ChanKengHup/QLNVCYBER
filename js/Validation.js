@@ -125,10 +125,12 @@ function Validation () {
         }
     }
     this.checkAccount = function (value, spanId, message, staffs) {
-        staffs.map(function(staff) {
-            if(staff.account === value) {
-
-                
+        var isExist = false
+         isExist = staffs.some(function(staff) {
+             return value === staff.account
+         })
+        
+            if(isExist) {
                 document.getElementById(spanId).innerHTML = message
                 document.getElementById(spanId).style.display = "block"
                 return false
@@ -139,6 +141,6 @@ function Validation () {
                  document.getElementById(spanId).style.display = "none"
                 return true
         }
-        })
+        
     }
 }

@@ -26,7 +26,7 @@ function getStaff() {
     }
     var isValid = true
     // account
-    isValid &= validation.checkEmpty(account, "tbTKNV", "Trường này không được để trống") && validation.checkName(account, "tbTKNV", "Tài khoản chỉ được chưa kí tự chữ") && validation.checkAccount(account, "tbTKNV", "Tài khoản này đã tồn tại", staffs.staffList)
+    isValid &= validation.checkEmpty(account, "tbTKNV", "Trường này không được để trống") && validation.checkAccount(account, "tbTKNV", "Tài khoản này đã tồn tại", staffs.staffList)
     // name
     isValid &= validation.checkEmpty(staffName, "tbTen", "Trường này không được để trống") && validation.checkName(staffName, "tbTen", "Tên chỉ được chưa kí tự chữ")
     // email
@@ -131,32 +131,31 @@ function updateStaffs() {
 
     }
 
-    // BUG HERE
-    // var isValid = true
-    // // account
-    // isValid &= validation.checkEmpty(account, "tbTKNV", "Trường này không được để trống") && validation.checkName(account, "tbTKNV", "Tài khoản chỉ được chưa kí tự chữ") && validation.checkAccount(account, "tbTKNV", "Tài khoản này đã tồn tại", staffs.staffList)
-    // // name
-    // isValid &= validation.checkEmpty(staffName, "tbTen", "Trường này không được để trống") && validation.checkName(staffName, "tbTen", "Tên chỉ được chưa kí tự chữ")
-    // // email
-    // isValid &= validation.checkEmpty(email, "tbEmail", "Trường này không được để trống") && validation.checkEmail(email, "tbEmail", "Vui lòng nhập đúng email")
-    // // password
-    // isValid &= validation.checkEmpty(password, "tbMatKhau", "Trường này không được để trống") && validation.checkPassWord(password, "tbMatKhau", "Mật khẩu có độ dài kí tư 6 - 8 kí tự, phải chứa kí tự số, kí tự đặc biệt")
-    // // day 
-    // isValid &= validation.checkDayWork(workDay, "tbNgay", "Vui lòng chọn ngày làm việc")
-    // // salary
-    // isValid &= validation.checkEmpty(salaryBase, "tbLuongCB", "Trường này không được để trống") && validation.checkSalary(salaryBase, "tbLuongCB", "Lương bằng số và không có dấu chấm ngăn cách giữa các chữ số")
-    // // Chọn chức vụ
-    // isValid &= validation.checkSelect("chucvu", "tbChucVu", "Vui lòng chọn chức vụ của bạn")
-    // // timeWork
-    // isValid &= validation.checkEmpty(timeWork, "tbGiolam", "Trường này không được để trống") && validation.checkSalary(timeWork, "tbGiolam", "Giờ bằng số và không có dấu chấm ngăn cách giữa các chữ số")
+    var isValid = true
+    // account
+    isValid &= validation.checkEmpty(account, "tbTKNV", "Trường này không được để trống")
+    // name
+    isValid &= validation.checkEmpty(staffName, "tbTen", "Trường này không được để trống") && validation.checkName(staffName, "tbTen", "Tên chỉ được chưa kí tự chữ")
+    // email
+    isValid &= validation.checkEmpty(email, "tbEmail", "Trường này không được để trống") && validation.checkEmail(email, "tbEmail", "Vui lòng nhập đúng email")
+    // password
+    isValid &= validation.checkEmpty(password, "tbMatKhau", "Trường này không được để trống") && validation.checkPassWord(password, "tbMatKhau", "Mật khẩu có độ dài kí tư 6 - 8 kí tự, phải chứa kí tự số, kí tự đặc biệt")
+    // day 
+    isValid &= validation.checkDayWork(workDay, "tbNgay", "Vui lòng chọn ngày làm việc")
+    // salary
+    isValid &= validation.checkEmpty(salaryBase, "tbLuongCB", "Trường này không được để trống") && validation.checkSalary(salaryBase, "tbLuongCB", "Lương bằng số và không có dấu chấm ngăn cách giữa các chữ số")
+    // Chọn chức vụ
+    isValid &= validation.checkSelect("chucvu", "tbChucVu", "Vui lòng chọn chức vụ của bạn")
+    // timeWork
+    isValid &= validation.checkEmpty(timeWork, "tbGiolam", "Trường này không được để trống") && validation.checkSalary(timeWork, "tbGiolam", "Giờ bằng số và không có dấu chấm ngăn cách giữa các chữ số")
 
-    // if(isValid) {
+    if(isValid) {
         
-    // }
-    
-    staffs.updateStaff(staff)
-    setLocalStorage(staffs.staffList)
-    showStaff(staffs.staffList)
+        staffs.updateStaff(staff)
+        setLocalStorage(staffs.staffList)
+        showStaff(staffs.staffList)
+        
+    }
     
 
 }
@@ -171,3 +170,13 @@ document.getElementById("btnDong").onclick = function () {
    document.getElementById("chucvu").value = '';
     document.getElementById("gioLam").value = '';
 }
+
+document.getElementById('btnTimNV').onclick = function () {
+    var keyWord = document.getElementById("searchName").value.trim()
+
+    
+    var newStaffs = staffs.searchStaff(keyWord)
+    showStaff(newStaffs)
+
+}
+
