@@ -48,7 +48,7 @@ function Validation () {
         }
     }
     this.checkPassWord = function (value, spanId, message) {
-        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,8}$/
+        var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,10}$/
         if(regex.test(value)) {
             document.getElementById(spanId).innerHTML = ''
             document.getElementById(spanId).style.display = "none"
