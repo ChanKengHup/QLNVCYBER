@@ -32,7 +32,7 @@ function getStaff() {
     // email
     isValid &= validation.checkEmpty(email, "tbEmail", "Trường này không được để trống") && validation.checkEmail(email, "tbEmail", "Vui lòng nhập đúng email")
     // password
-    isValid &= validation.checkEmpty(password, "tbMatKhau", "Trường này không được để trống") && validation.checkPassWord(password, "tbMatKhau", "Mật khẩu có độ dài kí tư 6 - 8 kí tự, phải chứa kí tự số, kí tự đặc biệt")
+    isValid &= validation.checkEmpty(password, "tbMatKhau", "Trường này không được để trống") && validation.checkPassWord(password, "tbMatKhau", "Mật khẩu có độ dài kí tư 6 - 10 kí tự, phải chứa kí tự số, kí tự đặc biệt")
     // day 
     isValid &= validation.checkDayWork(workDay, "tbNgay", "Vui lòng chọn ngày làm việc")
     // salary
@@ -139,7 +139,7 @@ function updateStaffs() {
     // email
     isValid &= validation.checkEmpty(email, "tbEmail", "Trường này không được để trống") && validation.checkEmail(email, "tbEmail", "Vui lòng nhập đúng email")
     // password
-    isValid &= validation.checkEmpty(password, "tbMatKhau", "Trường này không được để trống") && validation.checkPassWord(password, "tbMatKhau", "Mật khẩu có độ dài kí tư 6 - 8 kí tự, phải chứa kí tự số, kí tự đặc biệt")
+    isValid &= validation.checkEmpty(password, "tbMatKhau", "Trường này không được để trống") && validation.checkPassWord(password, "tbMatKhau", "Mật khẩu có độ dài kí tư 6 - 10 kí tự, phải chứa kí tự số, kí tự đặc biệt")
     // day 
     isValid &= validation.checkDayWork(workDay, "tbNgay", "Vui lòng chọn ngày làm việc")
     // salary
