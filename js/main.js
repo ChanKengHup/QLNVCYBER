@@ -34,6 +34,7 @@ function getStaff() {
     // password
     isValid &= validation.checkEmpty(password, "tbMatKhau", "Trường này không được để trống") && validation.checkPassWord(password, "tbMatKhau", "Mật khẩu có độ dài kí tư 6 - 10 kí tự, phải chứa kí tự số, kí tự đặc biệt")
     // day 
+    
     isValid &= validation.checkDayWork(workDay, "tbNgay", "Vui lòng chọn ngày làm việc")
     // salary
     isValid &= validation.checkEmpty(salaryBase, "tbLuongCB", "Trường này không được để trống") && validation.checkSalary(salaryBase, "tbLuongCB", "Lương bằng số và không có dấu chấm ngăn cách giữa các chữ số")
@@ -46,7 +47,14 @@ function getStaff() {
         staffs.staffList.push(staff)
         showStaff(staffs.staffList)
         setLocalStorage(staffs.staffList) 
-
+        document.getElementById("tknv").value = '';
+        document.getElementById("name").value = '';
+        document.getElementById("email").value = '';
+        document.getElementById("password").value = '';
+        document.getElementById("datepicker").value = '';
+        document.getElementById("luongCB").value = '';
+       document.getElementById("chucvu").value = '';
+        document.getElementById("gioLam").value = '';
     }
 }
 
@@ -179,4 +187,10 @@ document.getElementById('btnTimNV').onclick = function () {
     showStaff(newStaffs)
 
 }
+document.getElementById("searchName").addEventListener("keyup", function () {
+    var keyWord = document.getElementById("searchName").value.trim()
 
+    
+    var newStaffs = staffs.searchStaff(keyWord)
+    showStaff(newStaffs)
+})

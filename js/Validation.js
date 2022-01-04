@@ -74,6 +74,8 @@ function Validation () {
         var presentmonth = presentDay.getMonth()
         var timeDay = `${presentday}-${presentmonth+1}-${presentyear}`
         
+        var regex = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/
+
         if(timeDay == trueDay) {
            
                 document.getElementById(spanId).innerHTML = message
@@ -87,6 +89,11 @@ function Validation () {
                 document.getElementById(spanId).style.display = "block"
                 return false
 
+        }
+        else if(regex.test(value)) {
+            document.getElementById(spanId).innerHTML = message
+            document.getElementById(spanId).style.display = "block"
+            return false
         }
         else {
             document.getElementById(spanId).innerHTML = ''
