@@ -68,16 +68,15 @@ function Validation () {
         var day = valueDay.getDate()
         var year = valueDay.getFullYear()
         var month = valueDay.getMonth()
-        var trueDay = `${day}-${month+1}-${year}`
+        var trueDay = `${day}/${month+1}/${year}`
         var presentday = presentDay.getDate()
         var presentyear = presentDay.getFullYear()
         var presentmonth = presentDay.getMonth()
-        var timeDay = `${presentday}-${presentmonth+1}-${presentyear}`
+        var timeDay = `${presentday}/${presentmonth+1}/${presentyear}`
         
         var regex = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/
 
         if(timeDay == trueDay) {
-           
                 document.getElementById(spanId).innerHTML = message
                 document.getElementById(spanId).style.display = "block"
                 return false
@@ -85,15 +84,17 @@ function Validation () {
           
         }
         else if(value == '') {
+
             document.getElementById(spanId).innerHTML = message
                 document.getElementById(spanId).style.display = "block"
                 return false
 
         }
         else if(regex.test(value)) {
-            document.getElementById(spanId).innerHTML = message
-            document.getElementById(spanId).style.display = "block"
-            return false
+            document.getElementById(spanId).innerHTML = ''
+            document.getElementById(spanId).style.display = "none"
+            return true
+           
         }
         else {
             document.getElementById(spanId).innerHTML = ''
